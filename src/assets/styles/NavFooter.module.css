@@ -1,0 +1,8 @@
+.NavFooter {
+    background-color: var(--primary--color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 1.5em;
+}

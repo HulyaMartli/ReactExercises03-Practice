@@ -1,0 +1,20 @@
+.tbl{
+    border: 2px solid var(--white--color);
+    width: 100%;
+}
+
+.tbl tr{
+    border: 1px solid var(--secondary--color);
+}
+
+.tbl td, .tbl th {
+    padding: 8px;
+}
+
+.tbl thead {
+    background-color: var(--primary--color) !important;
+}
+
+.tbl tbody th {
+    background-color: lightslategray;
+}

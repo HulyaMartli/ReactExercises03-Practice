@@ -1,0 +1,20 @@
+.NavMain>ul {
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+  
+  }
+  
+.NavMain>ul>li>a {
+    border: 2px solid var(--secondary--color);
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+.NavMain>ul>li>a:hover {
+    background-color: var(--secondary--color);
+    color: var(--white--color);
+    border-color: var(--white--color);
+    font-weight: bolder;
+  }
+  
