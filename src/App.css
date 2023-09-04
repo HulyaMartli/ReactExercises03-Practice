@@ -9,6 +9,7 @@ body {
   font-family: 'IBM Plex Mono', monospace;
   background-color: var(--third--color);
   color: var(--white--color);
+  line-height: 1.5;
 }
 
 :root {
@@ -134,6 +135,7 @@ form {
   gap: var(--spacing-md);
   width: 400px;
   border-radius: 5px;
+  align-items: center;
 }
 
 form input[type="text"], form input[type="email"]{

@@ -1,0 +1,35 @@
+.QuizForm{
+    background-color: rgb(105, 116, 126, 0.3);
+}
+
+.Correct {
+    color: green; 
+    border: 1px solid green;
+    border-radius: 5px; 
+    padding: 10px; 
+    width: 50%;
+    background-color: rgb(108, 143, 108, 0.1);
+}
+
+.Correct h4 {
+    font-weight: bolder;
+}
+
+
+.Correct > p > span {
+    font-weight: bolder;
+}
+
+.False {
+    color: red; 
+    border: 1px solid red;
+    border-radius: 5px; 
+    padding: 10px; 
+    background-color: rgb(236, 185, 167, 0.1);
+    width: 400px;
+    margin-top: 5px;
+}
+
+.False h4 {
+    font-weight: bolder;
+}

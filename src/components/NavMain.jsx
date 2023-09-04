@@ -11,6 +11,9 @@ export function NavMain(){
             <li>
                 <Link to="/members">Members</Link>
             </li>
+            <li>
+                <Link to="/quiz">Quiz</Link>
+            </li>
         </ul>
     </nav>
     )

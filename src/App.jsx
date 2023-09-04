@@ -6,6 +6,7 @@ import { NavMain } from './components/NavMain'
 import { Page01 } from './pages/Page01'
 import { Page02 } from './pages/Page02'
 import { Routes, Route } from "react-router";
+import { Page03 } from './pages/Page03'
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Page01/>} />
         <Route path="/members" element={<Page02/>} />
+        <Route path="/quiz" element={<Page03 />} />
       </Routes>
     </main>
     <footer className={styles.NavFooter}></footer>
