@@ -1,6 +1,17 @@
-import { DATA_CONTACTS } from "../data"
+import { DATA_MEMBERS } from "../data"
 import classes from "../assets/styles/FilterableContactList.module.css"
 import { useState } from "react";
+
+DATA_MEMBERS.sort((a,b)=>{
+    if(a.profession>b.profession){
+        return 1;
+    }
+    if(a.profession<b.profession){
+        return -1;
+    }
+
+    return 0;
+})
 
 export function FilterableContactList() {
     /* Lifting state up: we moved useState from 
@@ -8,17 +19,18 @@ export function FilterableContactList() {
     ContactsTable uses it and we need it to be in a 
     empracive function like FilterableContactList */
     const [searchTerm, setSearchTerm] = useState("");
+    const [onlineOnly, setOnlineOnly] = useState(false);
     return (
         <div>
-            <SearchBar searchTerm={searchTerm} onTermChange={setSearchTerm}/>
+            <SearchBar searchTerm={searchTerm} onTermChange={setSearchTerm} onlineOnly={onlineOnly} onOnlineOnlyChange = {setOnlineOnly}/>
             <div>
-                <ContactsTable searchTerm={searchTerm}/>
+                <ContactsTable searchTerm={searchTerm} onlineOnly={onlineOnly}/>
             </div>
         </div>
     );
 }
 
-function SearchBar({searchTerm, onTermChange}) {
+function SearchBar({searchTerm, onTermChange, onlineOnly, onOnlineOnlyChange}) {
     //const [searchTerm, setSearchTerm] = useState("");
     return (
         <header>
@@ -27,7 +39,7 @@ function SearchBar({searchTerm, onTermChange}) {
                 type="text" 
                 name="searchTerm" 
                 id="searchTerm" 
-                placeholder="Write the contact name" onChange={(e)=>{
+                placeholder="Search by member name" onChange={(e)=>{
                     onTermChange(e.target.value);
                 }} value={searchTerm}/>
                 <label>
@@ -35,25 +47,52 @@ function SearchBar({searchTerm, onTermChange}) {
                     type="checkbox" 
                     name="onlineOnly" 
                     id="onlineOnly" 
-                    onChange={()=>{}}/>
+                    onChange={(e)=>{
+                        onOnlineOnlyChange(e.target.checked);
+                    }}
+                    checked={onlineOnly}
+                    />
                     Show just online
                 </label>
+                <p>{searchTerm}</p>
             </form>
         </header>
     );
 }
 
-function ContactsTable({searchTerm}) {
+function ContactsTable({searchTerm, onlineOnly}) {
 
-    const contacts = []; 
+    /* const contacts = DATA_CONTACTS.filter(c=>c.name.toLowerCase()
+        .includes(searchTerm))
+        .map((c)=> <RowContact key={c.id} name={c.name} email={c.email}/>); */
     
-    DATA_CONTACTS.forEach((c)=>{
-        if(c.name.toLowerCase().includes(searchTerm)){
-            contacts.push(c);
+    const members = [];
+    let lastProfession = null;
+
+    DATA_MEMBERS.forEach((c)=>{
+        const lowerName = c.name.toLowerCase();
+        const lowerSearchTerm = searchTerm.toLowerCase();
+        const indexOf = lowerName.indexOf(lowerSearchTerm);
+
+        if(indexOf === -1){
+            return;
         }
+
+        if(onlineOnly && !c.isOnline){
+            return;
+        }
+
+        if(lastProfession !== c.profession){
+            members.push(<RowProfession key={c.profession} profession={c.profession}/>);
+        }
+
+        members.push(
+            <RowContact key={c.id} name={c.name} email={c.email} />
+        );
+
+        lastProfession = c.profession
     })
-    console.log(contacts)
-    
+
     return (
         <>
         <table className={classes.tbl}>
@@ -64,10 +103,11 @@ function ContactsTable({searchTerm}) {
                 </tr>
             </thead>
             <tbody>
-                <RowProfession profession="Frontend Developer"/>
+                {members}
+                {/* <RowProfession profession="Frontend Developer"/>
                 <RowContact/>
                 <RowContact/>
-                <RowProfession profession="Dentist"/>
+                <RowProfession profession="Dentist"/> */}
             </tbody>
         </table>
         </>

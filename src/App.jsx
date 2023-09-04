@@ -1,5 +1,6 @@
 import './assets/styles/reset.css'
 import './App.css'
+import styles from "./assets/styles/NavFooter.module.css"
 import { Logo } from './components/Logo'
 import { NavMain } from './components/NavMain'
 import { Page01 } from './pages/Page01'
@@ -18,10 +19,10 @@ function App() {
     <main>
       <Routes>
         <Route path="/" element={<Page01/>} />
-        <Route path="/02" element={<Page02/>} />
+        <Route path="/members" element={<Page02/>} />
       </Routes>
     </main>
-    <footer>F</footer>
+    <footer className={styles.NavFooter}></footer>
     </>
   )
   

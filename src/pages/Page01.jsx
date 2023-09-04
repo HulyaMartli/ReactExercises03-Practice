@@ -1,7 +1,7 @@
 export function Page01(){
     return (
         <section>
-            <h2>Page 01</h2>
+            <h2>React Practices with Vite and React Router</h2>
         </section>
     )
 }

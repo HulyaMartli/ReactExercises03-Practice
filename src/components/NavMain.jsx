@@ -6,10 +6,10 @@ export function NavMain(){
     <nav className={styles.NavMain}>
         <ul>
             <li>
-                 <Link to="/">Main Page</Link>
+                 <Link to="/">Home</Link>
             </li>
             <li>
-                <Link to="/02">Page 2</Link>
+                <Link to="/members">Members</Link>
             </li>
         </ul>
     </nav>

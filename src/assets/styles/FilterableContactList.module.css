@@ -1,6 +1,8 @@
 .tbl{
     border: 2px solid var(--white--color);
     width: 100%;
+    display: inline-table;
+    align-items: center;
 }
 
 .tbl tr{
