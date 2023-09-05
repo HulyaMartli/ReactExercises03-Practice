@@ -9,13 +9,13 @@ export function NavMain(){
                  <NavLink to="/">Home</NavLink>
             </li>
             <li>
-                <NavLink to="/members">Members</NavLink>
+                <NavLink to="/members">1</NavLink>
             </li>
             <li>
-                <NavLink to="/quiz">Quiz</NavLink>
+                <NavLink to="/quiz">2</NavLink>
             </li>
             <li>
-                <NavLink to="/04">Page 04</NavLink>
+                <NavLink to="/accordion_panel">3</NavLink>
             </li>
         </ul>
     </nav>
