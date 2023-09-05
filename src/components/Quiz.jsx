@@ -20,17 +20,18 @@ function submitAnswer(answer) {
 
     return new Promise((resolve, reject) => {
 
+        setTimeout(()=>{
+            if (answer.toLocaleLowerCase("tr-TR") === "istanbul"){
 
-        if (answer === "istanbul")
-
-            resolve("Success!")
-
-        else {
-
-            reject(new Error("Nice try!"))
-
-        }
-
+                resolve("Success!")
+    
+            }else {
+    
+                reject(new Error("Nice try!"))
+    
+            }
+        },2000)
+        
     })
 
 }
@@ -56,7 +57,7 @@ function Question({ answer, setAnswer, setStatus }) {
 
                 <h3>Question 1: What is the name of the city that is spread out over two continents?</h3>
 
-                <input type="text" onChange={(e) => setAnswer(e.target.value.toLowerCase())} value={answer} placeholder="Cevabınızı buraya girin." />
+                <input type="text" onChange={(e) => setAnswer(e.target.value)} value={answer} placeholder="Your answer..." />
 
                 <button type="submit" disabled={answer == "" && true}> Cevapla </button>
 
